@@ -29,6 +29,11 @@ public class EmpleadoController {
     public void update (@RequestBody Empleado empleado, @PathVariable String numeroDocumento){
         empleadoService.update(empleado, numeroDocumento);
     }
+
+    @PutMapping("/empleado/inactivo/{numeroDocumento}")
+    public void updateEstadoInactivo (@PathVariable String numeroDocumento){
+        empleadoService.updateEstadoInactivo(numeroDocumento);
+    }
     @DeleteMapping("/{numeroDocumento}/empleado")
     public void  delete (@PathVariable String numeroDocumento){
         empleadoService.delete(numeroDocumento);

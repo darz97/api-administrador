@@ -52,8 +52,14 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     }
 
     @Override
-    public void insert(Empleado empleado) {
+    public void updateEstadoInactivo(String numeroDocumento) {
+        Empleado empleadoConsultado = findById(numeroDocumento);
+        empleadoConsultado.setEstadoContrato(Constantes.estadoContrato.INACTIVO);
+        empleadoRepository.save(empleadoConverter.modelToEntity(empleadoConsultado));
+    }
 
+    @Override
+    public void insert(Empleado empleado) {
         empleado.setEstadoContrato(Constantes.estadoContrato.ACTIVO);
         empleadoRepository.save(empleadoConverter.modelToEntity(empleado));
 

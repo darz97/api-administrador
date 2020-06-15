@@ -13,5 +13,7 @@ public interface EmpleadoService  {
 
     void update(Empleado empleado, String numeroDocumento);
 
+    void updateEstadoInactivo(String numeroDocumento);
+
     void insert(Empleado empleado);
 }

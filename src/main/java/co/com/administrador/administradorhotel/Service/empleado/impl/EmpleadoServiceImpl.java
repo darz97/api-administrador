@@ -47,11 +47,6 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     @Override
     public void update(Empleado empleado, String numeroDocumento) {
         Empleado empleadoConsultado = findById(numeroDocumento);
-        empleadoConsultado.setApellido(empleado.getApellido());
-        empleadoConsultado.setNombre(empleado.getNombre());
-        empleadoConsultado.setCorreo(empleado.getCorreo());
-        empleadoConsultado.getTipoDocumento().setId(empleado.getTipoDocumento().getId());
-        empleadoConsultado.getCargo().setId(empleado.getCargo().getId());
         empleadoRepository.save(empleadoConverter.modelToEntity(empleadoConsultado));
 
     }

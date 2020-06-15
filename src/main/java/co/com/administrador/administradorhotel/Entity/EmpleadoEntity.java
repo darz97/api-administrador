@@ -19,9 +19,9 @@ public class EmpleadoEntity extends Empleado {
     private String apellido;
     @Column(name="correo")
     private String correo;
+
     @ManyToOne(cascade={CascadeType.PERSIST})
     @JoinColumn(name="idtipodocumento")
-
     private TipoDocumentoEntity tipoDocumentoEntity;
     @ManyToOne(cascade={CascadeType.PERSIST})
     @JoinColumn(name="idcargo")

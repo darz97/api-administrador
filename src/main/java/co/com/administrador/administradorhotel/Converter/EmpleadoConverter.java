@@ -19,7 +19,9 @@ public class EmpleadoConverter {
         empleado.setApellido(empleadoEntity.getApellido());
         empleado.setCorreo(empleadoEntity.getCorreo());
         empleado.getTipoDocumento().setId(empleadoEntity.getTipoDocumentoEntity().getId());
+        empleado.getTipoDocumento().setNombre(empleadoEntity.getTipoDocumentoEntity().getNombre());
         empleado.getCargo().setId(empleadoEntity.getCargoEntity().getId());
+        empleado.getCargo().setNombre(empleadoEntity.getCargoEntity().getNombre());
         empleado.setEstadoContrato(empleadoEntity.getEstadoContrato());
         return empleado;
     }
@@ -31,7 +33,9 @@ public class EmpleadoConverter {
         empleadoEntity.setApellido(empleado.getApellido());
         empleadoEntity.setCorreo(empleado.getCorreo());
         empleadoEntity.getTipoDocumentoEntity().setId(empleado.getTipoDocumento().getId());
+        empleadoEntity.getTipoDocumentoEntity().setNombre(empleado.getTipoDocumento().getNombre());
         empleadoEntity.getCargoEntity().setId(empleado.getCargo().getId());
+        empleadoEntity.getCargoEntity().setNombre(empleado.getCargo().getNombre());
         empleadoEntity.setEstadoContrato(empleado.getEstadoContrato());
         return empleadoEntity;
     }
@@ -52,10 +56,10 @@ public class EmpleadoConverter {
             empleado.setNombre(empleadoEntity.get().getNombre());
             empleado.setApellido(empleadoEntity.get().getApellido());
             empleado.setCorreo(empleadoEntity.get().getCorreo());
-           // empleado.setTipoDocumento(empleadoEntity.get().getTipoDocumento());
-            //empleado.setCargo(empleadoEntity.get().getCargo());
             empleado.getTipoDocumento().setId(empleado.getTipoDocumento().getId());
+            empleado.getTipoDocumento().setNombre(empleado.getTipoDocumento().getNombre());
             empleado.getCargo().setId(empleado.getCargo().getId());
+            empleado.getCargo().setNombre(empleado.getCargo().getNombre());
             empleado.setEstadoContrato(empleadoEntity.get().getEstadoContrato());
 
             return empleado;

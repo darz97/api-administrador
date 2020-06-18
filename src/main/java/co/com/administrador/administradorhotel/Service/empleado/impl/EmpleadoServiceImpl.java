@@ -70,4 +70,11 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
 
     }
+
+    @Override
+    public void vincular(String numeroDocumento) {
+        Empleado empleadoConsultado = findById(numeroDocumento);
+        empleadoConsultado.setEstadoContrato(Constantes.estadoContrato.ACTIVO);
+        empleadoRepository.save(empleadoConverter.modelToEntity(empleadoConsultado));
+    }
 }

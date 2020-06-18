@@ -16,4 +16,6 @@ public interface EmpleadoService  {
     void updateEstadoInactivo(String numeroDocumento);
 
     void insert(Empleado empleado);
+
+    void vincular(String numeroDocumento);
 }

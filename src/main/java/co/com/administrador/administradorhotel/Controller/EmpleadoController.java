@@ -34,6 +34,10 @@ public class EmpleadoController {
     public void updateEstadoInactivo (@PathVariable String numeroDocumento){
         empleadoService.updateEstadoInactivo(numeroDocumento);
     }
+    @PutMapping("/empleado/activo/{numeroDocumento}")
+    public void   vincular(@PathVariable String numeroDocumento){
+        empleadoService.vincular(numeroDocumento);
+    }
     @DeleteMapping("/{numeroDocumento}/empleado")
     public void  delete (@PathVariable String numeroDocumento){
         empleadoService.delete(numeroDocumento);

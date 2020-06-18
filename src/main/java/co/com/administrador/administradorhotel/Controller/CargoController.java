@@ -28,7 +28,6 @@ public class CargoController {
     @DeleteMapping("/{id}/cargo")
     public void  delete (@PathVariable Long id){
         cargoService.delete(id);
-
     }
     @GetMapping("/cargos")
     public List<Cargo> list (){

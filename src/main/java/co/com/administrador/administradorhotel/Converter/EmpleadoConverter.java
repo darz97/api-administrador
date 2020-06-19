@@ -9,24 +9,27 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 @Component
 public class EmpleadoConverter {
 
-    public Empleado entityToModel(EmpleadoEntity empleadoEntity){
+    public Empleado entityToModel(EmpleadoEntity empleadoEntity) {
         Empleado empleado = new Empleado();
-        empleado.setNumeroDocumento(empleadoEntity.getNumeroDocumento());
-        empleado.setNombre(empleadoEntity.getNombre());
-        empleado.setApellido(empleadoEntity.getApellido());
-        empleado.setCorreo(empleadoEntity.getCorreo());
-        empleado.getTipoDocumento().setId(empleadoEntity.getTipoDocumentoEntity().getId());
-        empleado.getTipoDocumento().setNombre(empleadoEntity.getTipoDocumentoEntity().getNombre());
-        empleado.getCargo().setId(empleadoEntity.getCargoEntity().getId());
-        empleado.getCargo().setNombre(empleadoEntity.getCargoEntity().getNombre());
-        empleado.setEstadoContrato(empleadoEntity.getEstadoContrato());
+        if (empleadoEntity != null) {
+            empleado.setNumeroDocumento(empleadoEntity.getNumeroDocumento());
+            empleado.setNombre(empleadoEntity.getNombre());
+            empleado.setApellido(empleadoEntity.getApellido());
+            empleado.setCorreo(empleadoEntity.getCorreo());
+            empleado.getTipoDocumento().setId(empleadoEntity.getTipoDocumentoEntity().getId());
+            empleado.getTipoDocumento().setNombre(empleadoEntity.getTipoDocumentoEntity().getNombre());
+            empleado.getCargo().setId(empleadoEntity.getCargoEntity().getId());
+            empleado.getCargo().setNombre(empleadoEntity.getCargoEntity().getNombre());
+            empleado.setEstadoContrato(empleadoEntity.getEstadoContrato());
+        }
         return empleado;
     }
 
-    public EmpleadoEntity modelToEntity(Empleado empleado){
+    public EmpleadoEntity modelToEntity(Empleado empleado) {
         EmpleadoEntity empleadoEntity = new EmpleadoEntity();
         empleadoEntity.setNumeroDocumento(empleado.getNumeroDocumento());
         empleadoEntity.setNombre(empleado.getNombre());
@@ -66,7 +69,6 @@ public class EmpleadoConverter {
         }
         return empleado;
     }
-
 
 
 }

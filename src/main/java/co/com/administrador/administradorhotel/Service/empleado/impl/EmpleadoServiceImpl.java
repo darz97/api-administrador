@@ -6,6 +6,7 @@ import co.com.administrador.administradorhotel.Repository.EmpleadoRepository;
 import co.com.administrador.administradorhotel.Service.empleado.EmpleadoService;
 import co.com.administrador.administradorhotel.constantes.Constantes;
 import co.com.administrador.administradorhotel.exception.NoExisteException;
+import co.com.administrador.administradorhotel.exception.UsuarioExiste;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,9 +66,13 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
     @Override
     public void insert(Empleado empleado) {
-        empleado.setEstadoContrato(Constantes.estadoContrato.ACTIVO);
-        empleadoRepository.save(empleadoConverter.modelToEntity(empleado));
-
+        Empleado empleadoExiste = empleadoConverter.entityToModel(empleadoRepository.findById(empleado.getNumeroDocumento()).orElse(null));
+        if(!empleado.getNumeroDocumento().equals(empleadoExiste.getNumeroDocumento())) {
+            empleado.setEstadoContrato(Constantes.estadoContrato.ACTIVO);
+            empleadoRepository.save(empleadoConverter.modelToEntity(empleado));
+        }else{
+            throw new UsuarioExiste("El usuario ya esta creado");
+        }
 
     }
 

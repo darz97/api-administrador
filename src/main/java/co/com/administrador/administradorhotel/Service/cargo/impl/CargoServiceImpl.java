@@ -4,6 +4,7 @@ import co.com.administrador.administradorhotel.Converter.CargoConverter;
 import co.com.administrador.administradorhotel.Domain.Cargo;
 import co.com.administrador.administradorhotel.Repository.CargoRepository;
 import co.com.administrador.administradorhotel.Service.cargo.CargoService;
+import co.com.administrador.administradorhotel.exception.CargoExiste;
 import co.com.administrador.administradorhotel.exception.NoExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,13 @@ public class CargoServiceImpl implements CargoService {
 
     @Override
     public void insert(Cargo cargo) {
-        cargoRepository.save(cargoConverter.modelToEntity(cargo));
+        Cargo cargoExiste =  cargoConverter.entityToModel(cargoRepository.findByNombre(cargo.getNombre()).orElse(null));
+        if(!cargo.getNombre().equals(cargoExiste.getNombre())){
+            cargoRepository.save(cargoConverter.modelToEntity(cargo));
+        }
+        else{
+            throw new CargoExiste("El Cargo ya existe");
+        }
 
     }
 

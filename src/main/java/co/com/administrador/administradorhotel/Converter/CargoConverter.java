@@ -16,8 +16,10 @@ public class CargoConverter {
 
     public Cargo entityToModel(CargoEntity cargoEntity){
         Cargo cargo = new Cargo();
-        cargo.setId(cargoEntity.getId());
-        cargo.setNombre(cargoEntity.getNombre());
+        if (cargoEntity != null){
+            cargo.setId(cargoEntity.getId());
+            cargo.setNombre(cargoEntity.getNombre());
+        }
         return cargo;
     }
 
